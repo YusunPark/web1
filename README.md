@@ -1,6 +1,6 @@
 # TodoList_1
 
-## Vue.js 
+## Vue.js / Vue Cli 2.x
 
 ### Deploy Todo list to github pages  
 : https://yusunpark.github.io/TodoList_1/
