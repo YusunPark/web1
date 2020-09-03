@@ -36,7 +36,7 @@
               <a href="#" @click="done(todo)">🤸‍♀️ Done</a>
             </li>
             <li>
-              <a href="#" @click="deleteTodo(todo)">🧹 Delete</a>
+              <a href="#" @click="deleteTodo(index)">🧹 Delete</a>
             </li>
             <li>
               <a href="#">
@@ -64,18 +64,14 @@ export default {
     return {
       name: null,
       todos: [],
-      change_name: "",
+      change_name: null,
     };
   },
   methods: {
     doing(i) {
-      // i 인덱스 부터 1개를 삭제한다.
-      this.todos.splice(i, 1);
+      
     },
-    done(i) {
-      // i 인덱스 부터 1개를 삭제한다.
-      this.todos.splice(i, 1);
-    },
+    done(i) {},
     editTodo(todo, change_name) {
       if (change_name != null) {
         todo.name = change_name;
@@ -88,13 +84,12 @@ export default {
     },
     createTodo(name) {
       if (name != null) {
-        // this.todos.push({name:name});
-
         // 맨앞에 todo 추가
-        this.todos.splice(0, 0, { name: name });
+        this.todos.unshift({ name: name });
         this.name = null;
       }
     },
   },
 };
 </script>
+
