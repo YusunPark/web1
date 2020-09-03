@@ -15,7 +15,7 @@
     </div>
     <ul class="list-group">
       <!-- 여러개를 선택하는 거니까 v-for  -->
-      <li class="list-group-item" v-for="(todo, index) in todos">
+      <li class="list-group-item" v-for="(todo, index) in todos" :class="todo.status">
         {{ todo.name }}
         <div class="btn-group pull-right" style="font-size:12px; line-height: 1;">
           <button
@@ -63,13 +63,14 @@ export default {
   data() {
     return {
       name: null,
-      todos: [],
       change_name: null,
+      todos: [],
+      status: null,
     };
   },
   methods: {
-    doing(i) {
-      
+    doing(todo) {
+      todo.status = "doing";
     },
     done(i) {},
     editTodo(todo, change_name) {
@@ -93,3 +94,16 @@ export default {
 };
 </script>
 
+<style>
+.dropdown-menu {
+  background-color: rgb(241, 247, 255);
+}
+
+.doing {
+  background-color: rgb(201, 243, 201);
+}
+
+.done {
+  background-color: rgb(255, 227, 227);
+}
+</style>
