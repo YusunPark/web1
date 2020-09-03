@@ -10,7 +10,7 @@
         v-on:keyup.enter="createTodo(name)"
       />
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" @click="createTodo(name)">추가</button>
+        <button class="btn btn-default" type="button" @click="createTodo(name)">Add</button>
       </span>
     </div>
     <ul class="list-group">
@@ -25,12 +25,30 @@
             aria-haspopup="true"
             aria-expanded="false"
           >
-            더보기
+            More
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             <li>
-              <a href="#" @click="deleteTodo(todo)">삭제</a>
+              <a href="#" @click="doing(todo)">🏃‍♀️ Doing</a>
+            </li>
+            <li>
+              <a href="#" @click="done(todo)">🤸‍♀️ Done</a>
+            </li>
+            <li>
+              <a href="#" @click="deleteTodo(todo)">🧹 Delete</a>
+            </li>
+            <li>
+              <a href="#">
+                👩‍💻 Edit
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="할일 수정하기"
+                  v-model="change_name"
+                  v-on:keyup.enter="editTodo(todo, change_name)"
+                />
+              </a>
             </li>
           </ul>
         </div>
@@ -46,9 +64,24 @@ export default {
     return {
       name: null,
       todos: [],
+      change_name: "",
     };
   },
   methods: {
+    doing(i) {
+      // i 인덱스 부터 1개를 삭제한다.
+      this.todos.splice(i, 1);
+    },
+    done(i) {
+      // i 인덱스 부터 1개를 삭제한다.
+      this.todos.splice(i, 1);
+    },
+    editTodo(todo, change_name) {
+      if (change_name != null) {
+        todo.name = change_name;
+      }
+      this.change_name = null;
+    },
     deleteTodo(i) {
       // i 인덱스 부터 1개를 삭제한다.
       this.todos.splice(i, 1);
