@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>Todo List</h2>
-    <button @click="All">delete All</button>
+    <button type="button" class="btn btn-delete " @click="All">delete All</button>
     <div class="input-group" style="margin-bottom:10px;">
       <input
         type="text"
@@ -149,4 +149,24 @@ export default {
 .done {
   background-color: rgb(255, 227, 227);
 }
+
+/* GENERAL BUTTON STYLING */
+
+.btn-delete {
+  padding: 4px 15px;
+  background: #59da93;
+  border: 3px solid #76ce9b;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+  font-size: initial;
+  margin-bottom: 3px;
+  position: relative;
+}
+
+.btn-delete:hover {
+  color: #59da93;
+  background: #fff;
+}
+
 </style>
