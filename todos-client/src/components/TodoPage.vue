@@ -16,7 +16,7 @@
     </div>
     <ul class="list-group">
       <!-- 여러개를 선택하는 거니까 v-for  -->
-      <li class="list-group-item" v-for="(todo, index) in todos" :key="index" :class={status}>
+      <li class="list-group-item" v-for="(todo, index) in todos" :key="index" :class="todo.status">
         {{ todo.name }}
         <div class="btn-group pull-right" style="font-size:12px; line-height: 1;">
           <button
@@ -63,7 +63,6 @@ export default {
   name: "TodoPage",
   data() {
     return {
-      index: 0,
       name: "",
       change_name: "",
       todos: [],
@@ -76,8 +75,8 @@ export default {
   //   localStorage.setItem("item1", "퇴근");
   //   this.item1 = localStorage.getItem("item1");
   // },
-  
-  // localStorage 잠시 제거 
+
+  // localStorage 잠시 제거
   // mounted() {
   //   let len = localStorage.length;
   //   this.index = len;
@@ -97,41 +96,42 @@ export default {
   //   },
   // },
   methods: {
-    createTodo(name, index) {
-      if (name != null) {
+    createTodo(name) {
+      if (name != false) {
         // 맨앞에 todo 추가
         // let todo = name;
         // localStorage.setItem(`todo${index}`, todo);
         this.todos.unshift({ name: name, status: "todo" });
-
-        this.name = null;
-        this.index += 1;
       }
+      this.name = "";
     },
     deleteTodo(i) {
       // i 인덱스 부터 1개를 삭제한다.
       this.todos.splice(i, 1);
     },
     editTodo(todo, change_name) {
-      if (change_name != null) {
+      if (change_name != false) {
         todo.name = change_name;
       }
-      this.change_name = null;
+      this.change_name = "";
     },
     doing(todo) {
-      if(todo.status == "doing"){
-        todo.status = "todo"
-      }
-      else{
-      todo.status = "doing";
+      if (todo.status == "doing") {
+        todo.status = "todo";
+      } else {
+        todo.status = "doing";
       }
     },
-    done(i) {},
-    
-    
+    done(todo) {
+      if (todo.status == "done") {
+        todo.status = "doing";
+      } else {
+        todo.status = "done";
+      }
+    },
+
     All() {
-      localStorage.clear();
-      this.index = 0;
+      this.todos = [];
     },
   },
 };
