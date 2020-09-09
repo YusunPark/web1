@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>To do List</h2>
-    <button type="button" class="btn btn-delete " @click="All">delete All</button>
+    <button type="button" class="btn btn-delete" @click="All">delete All</button>
     <div class="input-group" style="margin-bottom:10px;">
       <input
         type="text"
@@ -45,10 +45,18 @@
                 <input
                   type="text"
                   class="form-control"
+                  style="float:left"
                   placeholder="할일 수정하기"
                   v-model="change_name"
                   v-on:keyup.enter="editTodo(todo, change_name)"
                 />
+
+                <button
+                  class="btn btn-default pull-right"
+                  style="float:left"
+                  type="button"
+                  @click="editTodo(todo, change_name)"
+                >Edit</button>
               </a>
             </li>
           </ul>
@@ -168,5 +176,4 @@ export default {
   color: #59da93;
   background: #fff;
 }
-
 </style>
