@@ -40,7 +40,7 @@
               <a href="#" @click="deleteTodo(index)">🧹 Delete</a>
             </li>
             <li>
-              <a href="#">
+              <a href="#"  @click="editTodo(todo, change_name)">
                 👩‍💻 Edit
                 <input
                   type="text"
@@ -51,12 +51,7 @@
                   v-on:keyup.enter="editTodo(todo, change_name)"
                 />
 
-                <button
-                  class="btn btn-default pull-right"
-                  style="float:left"
-                  type="button"
-                  @click="editTodo(todo, change_name)"
-                >Edit</button>
+  
               </a>
             </li>
           </ul>
