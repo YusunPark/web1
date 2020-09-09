@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>Todo List</h2>
+    <h2>To do List</h2>
     <button type="button" class="btn btn-delete " @click="All">delete All</button>
     <div class="input-group" style="margin-bottom:10px;">
       <input
